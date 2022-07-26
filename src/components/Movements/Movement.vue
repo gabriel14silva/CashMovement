@@ -38,19 +38,12 @@ const props = defineProps({
 });
 
 const { id, title, description, amount } = toRefs(props);
-
-const amountCurrency = computed(
-    () => currencyFormatter.format(amount.value)
-);
-
+const amountCurrency = computed(() => currencyFormatter.format(amount.value));
 const isNegative = computed(() => amount.value < 0);
-
-
 const emit = defineEmits(["remove"]);
-
 const remove = () => {
-    console.log(id.value);
-}
+  emit("remove", id.value);
+};
 </script>
 
 <style scoped>
@@ -85,9 +78,9 @@ h4 {
   margin-bottom: 16px;
 }
 .red {
-    color: red;
+  color: red;
 }
 .green {
-    color: green;
+  color: green;
 }
 </style>
